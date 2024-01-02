@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Currency Exchange</title>
+    <script>
+       var myHeaders = new Headers();
+        myHeaders.append("apikey", "oogCnQJvHWK0ppiGOnF0eKq3oy0bH9p3");
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            headers: myHeaders
+        };
+  
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.querySelector('form').onsubmit = function (){
+                
+                fetch("https://api.apilayer.com/exchangerates_data/latest?base=USD", requestOptions)
+                .then (response => response.json())
+                .then( data => {
+                    console.log( data );
+                    const currency = document.querySelector('#currency').value.toUpperCase();
+                    const rate = data.rates[currency];
+                    if ( rate !== undefined) {
+                        document.querySelector('#result').innerHTML = `1 USD is equal to ${rate} ${currency}`;
+                    }   else{
+                        document.querySelector('#result').innerHTML = 'Invalid Currency'
+                    }
+                })
+                .catch(error => {
+                    console.log('Error', error)
+                }
+                )
+
+                return  false
+            }
+
+            
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Currency Exchange!!</h1>
+    
+    <form action="">
+        <input id="currency" placeholder ="Currency" type ="text">
+        <input type="submit" value="Convert">
+    </form>
+    <div id="result">
+
+    </div>
+
+</body>
+
+</html>
+

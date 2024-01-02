@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Currency Exchange</title>
+    <script>
+       var myHeaders = new Headers();
+        myHeaders.append("apikey", "oogCnQJvHWK0ppiGOnF0eKq3oy0bH9p3");
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            headers: myHeaders
+        };
+  
+        document.addEventListener('DOMContentLoaded', function () {
+
+            fetch("https://api.apilayer.com/exchangerates_data/latest?base=USD", requestOptions)
+                .then (response => response.json())
+                .then( data => {
+                    console.log( data );
+                    const rate = data.rates.COP;
+                    document.querySelector('body').innerHTML = `1 USD is equal to ${rate} COP.  `;
+                })
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Currency Exchange!!</h1>
+    
+
+
+</body>
+
+</html>
+

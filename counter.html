@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Counter</title>
+        <script>
+            let counter = 0;
+            function count(){
+                counter += 1;
+                alert (counter);
+
+            }
+
+            function count1(){
+                
+                document.querySelector("h1").innerHTML = "Goodbye!";
+            }
+
+
+            function count2(){
+                counter ++;
+                document.querySelector("h1").innerHTML = counter;
+
+                if ( counter % 10 === 0 ) {
+                    alert (`Counter is now ${counter} ojo aqui colocar ctrl alt llave derecha  space para OBTRENER BACKTICK`); 
+                    
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function (){  
+                document.querySelector('button').addEventListener('click', count2)
+            } )
+          
+            
+        </script>
+    </head>
+    <body>
+            <h1>Hello!!</h1>
+            <button>Click here for count in h1</button>
+            <button onclick="count()">Click here for count</button>
+            <button onclick="count1()">Click here for show element </button>
+          
+    </body>
+
+</html>
